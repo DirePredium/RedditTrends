@@ -6,7 +6,7 @@ import com.direpredium.reddittrends.data.storage.FileStorage
 
 class FileLocalStorage: FileStorage {
 
-    override fun savePhoto(photoParams: SavePhotoParams, photoData: Bitmap): Boolean {
+    override fun savePhoto(photoParams: SavePhotoParams): Boolean {
         TODO("Not yet implemented")
     }
 
