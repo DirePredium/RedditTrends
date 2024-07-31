@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.direpredium.reddittrends.R
 import com.direpredium.reddittrends.databinding.FragmentTopPostsBinding
+import com.direpredium.reddittrends.presentation.viewmodel.TopPostsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class TopPosts : Fragment(R.layout.fragment_top_posts) {
+@AndroidEntryPoint
+class TopPostsFragment : Fragment(R.layout.fragment_top_posts) {
 
     private lateinit var binding: FragmentTopPostsBinding
+    private val viewModel: TopPostsViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

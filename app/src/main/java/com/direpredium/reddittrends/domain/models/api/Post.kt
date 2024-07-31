@@ -1,3 +1,18 @@
 package com.direpredium.reddittrends.domain.models.api
 
-class Post(val id: String)
+
+class Post(
+    val author: String,
+    val createUtc: Long,
+    val thumbnailUrl: String,
+    val mediaMetadata: Map<String, MediaMetadata>?,
+    val numComments: Int
+)
+
+data class MediaMetadata(
+    val fullMedia: MediaPicture
+)
+
+data class MediaPicture(
+    val url: String
+)

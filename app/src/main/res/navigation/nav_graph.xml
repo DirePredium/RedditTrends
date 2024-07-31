@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/topPosts"
-        android:name="com.direpredium.reddittrends.presentation.screens.TopPosts"
+        android:name="com.direpredium.reddittrends.presentation.screens.TopPostsFragment"
         android:label="Top Posts"
         tools:layout="@layout/fragment_top_posts" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/postDetails"
-        android:name="com.direpredium.reddittrends.presentation.screens.PostDetails"
+        android:name="com.direpredium.reddittrends.presentation.screens.PostDetailsFragment"
         android:label="Post deteils"
         tools:layout="@layout/fragment_post_details" />
 
