@@ -2,7 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.screens.PostDetails">
+    tools:context=".presentation.screens.PostDetailsFragment">
 
+    <TextView
+        android:id="@+id/tTemp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="blank_fragment" />
 
 </FrameLayout>

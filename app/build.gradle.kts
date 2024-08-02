@@ -63,4 +63,11 @@ dependencies {
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    // Pull refresher
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    // Paging
+    val paging_version = "3.3.1"
+    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }
