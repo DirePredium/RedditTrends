@@ -62,11 +62,13 @@ fun RedditData.mapToPagingPosts(): PagingPosts {
 
 fun PostData.mapToPost(): Post {
     val mediaMetadataMapped = this.media_metadata?.mapValues { (_, metadata) ->
-        val url = HtmlUrlStringHandler.decodeHtmlEntities(metadata.s.u)
+        val url = metadata.s?.u?.let {
+            HtmlUrlStringHandler.decodeHtmlEntities(it)
+        }
         MediaMetadata(fullMedia = MediaPicture(url = url))
     }
     val galleryData = this.gallery_data?.let { galleryData ->
-        GalleryData(items = galleryData.items.map { item ->
+        GalleryData(items = galleryData.items?.map { item ->
             GalleryItem(media_id = item.media_id, id = item.id)
         })
     }

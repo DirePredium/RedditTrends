@@ -7,12 +7,16 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -30,6 +34,7 @@ import com.direpredium.reddittrends.presentation.viewmodel.PostDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+
 
 const val ARG_NAME = "name"
 const val ARG_IMAGE_URL = "imageUrl"
@@ -132,6 +137,8 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
                 .into(imageView)
         }
     }
+
+
 
     private fun setViewLoadState(asyncResult: AsyncResult<String>) {
         when(asyncResult) {

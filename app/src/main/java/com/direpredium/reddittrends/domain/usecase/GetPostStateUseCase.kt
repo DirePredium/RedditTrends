@@ -4,10 +4,10 @@ import com.direpredium.reddittrends.domain.models.storage.PostState
 import com.direpredium.reddittrends.domain.repository.PostStateRepository
 import javax.inject.Inject
 
-class SavePostStateUseCase @Inject constructor(private val postStateRepository: PostStateRepository) {
+class GetPostStateUseCase @Inject constructor(private val postStateRepository: PostStateRepository) {
 
-    fun execute(postState: PostState?): Boolean {
-        return postStateRepository.savePostState(postState)
+    fun execute(): PostState? {
+        return postStateRepository.getPostState()
     }
 
 }

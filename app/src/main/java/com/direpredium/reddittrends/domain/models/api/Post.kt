@@ -15,18 +15,18 @@ class Post(
 )
 
 data class MediaMetadata(
-    val fullMedia: MediaPicture
+    val fullMedia: MediaPicture?
 )
 
 data class MediaPicture(
-    val url: String
+    val url: String?
 )
 
 data class GalleryData(
-    val items: List<GalleryItem>
+    val items: List<GalleryItem>?
 )
 
 data class GalleryItem(
-    val media_id: String,
-    val id: Long
+    val media_id: String?,
+    val id: Long?
 )

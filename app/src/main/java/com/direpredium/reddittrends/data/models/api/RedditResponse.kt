@@ -29,15 +29,15 @@ data class PostData(
 )
 
 data class MediaMetadata(
-    val s: MediaPicture
+    val s: MediaPicture?
 )
 
 data class MediaPicture(
-    val u: String
+    val u: String?
 )
 
 data class GalleryData(
-    val items: List<GalleryItem>
+    val items: List<GalleryItem>?
 )
 
 data class GalleryItem(

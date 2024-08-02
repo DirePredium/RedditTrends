@@ -41,7 +41,7 @@ class PostsAdapter(
                     val firstMetaImageUrl = post.galleryData?.items?.get(0)?.let { it ->
                         post.mediaMetadata?.get(it.media_id)
                     }
-                    if(post.mediaMetadata.isNullOrEmpty() || firstMetaImageUrl == null) {
+                    if(post.mediaMetadata.isNullOrEmpty() || firstMetaImageUrl?.fullMedia?.url == null) {
                         throw IllegalStateException("Unreachable image opening")
                     }
                     onImageClick(post.name, firstMetaImageUrl.fullMedia.url)

@@ -13,11 +13,13 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.direpredium.reddittrends.R
 import com.direpredium.reddittrends.databinding.FragmentTopPostsBinding
+import com.direpredium.reddittrends.domain.models.storage.PostState
 import com.direpredium.reddittrends.presentation.adapters.PostsAdapter
 import com.direpredium.reddittrends.presentation.adapters.PostsLoadStateAdapter
 import com.direpredium.reddittrends.presentation.adapters.TryAgainAction
 import com.direpredium.reddittrends.presentation.viewmodel.TopPostsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
@@ -40,8 +42,12 @@ class TopPostsFragment : Fragment(R.layout.fragment_top_posts) {
         setupSwipeToRefresh()
     }
 
-
     private fun openDetails(name: String, imageUrl: String) {
+        val postState = PostState(
+            name,
+            imageUrl
+        )
+        viewModel.saveOpenedPostState(postState)
         findNavController().navigate(
             R.id.action_topPosts_to_postDetails,
             bundleOf(ARG_NAME to name, ARG_IMAGE_URL to imageUrl)
@@ -49,7 +55,7 @@ class TopPostsFragment : Fragment(R.layout.fragment_top_posts) {
     }
 
     private fun setupPostsList() {
-        val adapter = PostsAdapter {name, imageSourse ->
+        val adapter = PostsAdapter { name, imageSourse ->
             openDetails(name, imageSourse)
         }
         val tryAgainAction: TryAgainAction = { adapter.retry() }

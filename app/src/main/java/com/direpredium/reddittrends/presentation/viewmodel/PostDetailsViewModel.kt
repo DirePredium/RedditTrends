@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.direpredium.reddittrends.domain.models.api.AsyncResult
 import com.direpredium.reddittrends.domain.models.api.SuccessResult
 import com.direpredium.reddittrends.domain.models.storage.PhotoParams
+import com.direpredium.reddittrends.domain.usecase.SavePostStateUseCase
 import com.direpredium.reddittrends.domain.usecase.SaveWebPhotoToGalleryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
