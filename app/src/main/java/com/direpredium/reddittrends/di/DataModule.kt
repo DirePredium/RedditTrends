@@ -4,12 +4,10 @@ import android.content.Context
 import com.direpredium.reddittrends.data.api.ApiRedditTopPostService
 import com.direpredium.reddittrends.data.api.retrofit.RedditRetrofitClient
 import com.direpredium.reddittrends.data.repository.FileRepositoryImpl
-import com.direpredium.reddittrends.data.repository.PostStateRepositoryImpl
 import com.direpredium.reddittrends.data.repository.PostsRepositoryImpl
 import com.direpredium.reddittrends.data.storage.FileStorage
 import com.direpredium.reddittrends.data.storage.local.FileLocalStorage
 import com.direpredium.reddittrends.domain.repository.FileRepository
-import com.direpredium.reddittrends.domain.repository.PostStateRepository
 import com.direpredium.reddittrends.domain.repository.PostsApiRepository
 import dagger.Module
 import dagger.Provides
@@ -39,9 +37,5 @@ object DataModule {
     @Provides
     @Singleton
     fun provideFileLocalStorage(@ApplicationContext appContext: Context) : FileStorage = FileLocalStorage(appContext)
-
-    @Provides
-    @Singleton
-    fun providePostStateRepositoryImpl(): PostStateRepository = PostStateRepositoryImpl()
 
 }

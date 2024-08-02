@@ -23,6 +23,7 @@ data class PostData(
     val title: String,
     val name: String,
     val media_metadata: Map<String, MediaMetadata>?,
+    val gallery_data: GalleryData?,
     val num_comments: Int,
     val preview: Preview?
 )
@@ -33,6 +34,15 @@ data class MediaMetadata(
 
 data class MediaPicture(
     val u: String
+)
+
+data class GalleryData(
+    val items: List<GalleryItem>
+)
+
+data class GalleryItem(
+    val media_id: String,
+    val id: Long
 )
 
 data class Preview(

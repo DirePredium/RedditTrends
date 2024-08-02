@@ -2,6 +2,7 @@ package com.direpredium.reddittrends.presentation.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.paging.PagingDataAdapter
@@ -13,17 +14,41 @@ import com.direpredium.reddittrends.data.util.TimeManager
 import com.direpredium.reddittrends.databinding.ItemPostBinding
 import com.direpredium.reddittrends.domain.models.api.Post
 
-class PostsAdapter : PagingDataAdapter<Post, PostsAdapter.Holder>(PostsDiffCallback()) {
+class PostsAdapter(
+    private val onImageClick: (String, String) -> Unit
+) : PagingDataAdapter<Post, PostsAdapter.Holder>(PostsDiffCallback()) {
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val post = getItem(position) ?: return
         val hoursAgo = TimeManager.utcToHoursAgo(post.createUtc)
-        with (holder.binding) {
+        holder.binding.apply {
             tAuthor.text = post.author
             tHoursAgo.text = "$hoursAgo hr. ago"
             tTitle.text = post.title
             tNumComments.text = "${post.numComments} comments"
-            loadPostPhoto(ivThumbnail, post.thumbnailUrl)
+            when(post.thumbnailUrl) {
+                "default", "image" -> loadPostPhoto(ivThumbnail, post.imageSource)
+                else -> {
+                    if(post.thumbnailUrl.startsWith("http")) {
+                        loadPostPhoto(ivThumbnail, post.thumbnailUrl)
+                    } else {
+                        ivThumbnail.visibility = View.GONE
+                    }
+                }
+            }
+            ivThumbnail.setOnClickListener {
+                if(post.imageSource.isNullOrEmpty()) {
+                    val firstMetaImageUrl = post.galleryData?.items?.get(0)?.let { it ->
+                        post.mediaMetadata?.get(it.media_id)
+                    }
+                    if(post.mediaMetadata.isNullOrEmpty() || firstMetaImageUrl == null) {
+                        throw IllegalStateException("Unreachable image opening")
+                    }
+                    onImageClick(post.name, firstMetaImageUrl.fullMedia.url)
+                } else {
+                    onImageClick(post.name, post.imageSource)
+                }
+            }
         }
     }
 
@@ -33,17 +58,16 @@ class PostsAdapter : PagingDataAdapter<Post, PostsAdapter.Holder>(PostsDiffCallb
         return Holder(binding)
     }
 
-    private fun loadPostPhoto(imageView: ImageView, url: String) {
+    private fun loadPostPhoto(imageView: ImageView, url: String?) {
         val context = imageView.context
-        if (url.isNotBlank()) {
+        if (url.isNullOrBlank()) {
             Glide.with(context)
-                .load(url)
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder)
+                .load(R.drawable.placeholder)
                 .into(imageView)
         } else {
             Glide.with(context)
-                .load(R.drawable.placeholder)
+                .load(url)
+                .error(R.drawable.ic_image)
                 .into(imageView)
         }
     }

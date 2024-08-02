@@ -36,19 +36,22 @@ class TopPostsFragment : Fragment(R.layout.fragment_top_posts) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTopPostsBinding.bind(view)
 
-        setupUsersList()
+        setupPostsList()
         setupSwipeToRefresh()
     }
 
-    private fun openDetails() {
+
+    private fun openDetails(name: String, imageUrl: String) {
         findNavController().navigate(
             R.id.action_topPosts_to_postDetails,
-            bundleOf("postId" to "1")
+            bundleOf(ARG_NAME to name, ARG_IMAGE_URL to imageUrl)
         )
     }
 
-    private fun setupUsersList() {
-        val adapter = PostsAdapter()
+    private fun setupPostsList() {
+        val adapter = PostsAdapter {name, imageSourse ->
+            openDetails(name, imageSourse)
+        }
         val tryAgainAction: TryAgainAction = { adapter.retry() }
         val footerAdapter = PostsLoadStateAdapter(tryAgainAction)
         val adapterWithLoadState = adapter.withLoadStateFooter(footerAdapter)

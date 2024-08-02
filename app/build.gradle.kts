@@ -69,5 +69,5 @@ dependencies {
     val paging_version = "3.3.1"
     implementation("androidx.paging:paging-runtime-ktx:$paging_version")
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }

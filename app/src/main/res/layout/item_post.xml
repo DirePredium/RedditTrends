@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tAuthor"
         app:layout_constraintWidth_max="100dp"
-        tools:src="@drawable/placeholder" />
+        app:layout_constraintWidth_min="70dp"
+        tools:src="@drawable/ic_image" />
 
     <TextView
         android:id="@+id/tAuthor"

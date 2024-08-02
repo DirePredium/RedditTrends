@@ -1,4 +1,4 @@
-package com.direpredium.reddittrends
+package com.direpredium.reddittrends.presentation.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

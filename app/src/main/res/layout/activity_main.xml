@@ -10,10 +10,8 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/purple_700"
+        android:background="#EAEAEA"
         tools:title="Screen Title"
-        app:titleTextColor="@color/white"
-        app:navigationIconTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

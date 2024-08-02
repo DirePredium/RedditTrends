@@ -7,5 +7,4 @@ import com.direpredium.reddittrends.domain.models.api.PagingPosts
 
 interface PostsApiRepository {
     suspend fun getPostsByPage(page: Page): AsyncResult<PagingPosts>
-    suspend fun getPostByName(name: String): AsyncResult<Post>
 }
