@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/topPosts">
+
+    <fragment
+        android:id="@+id/topPosts"
+        android:name="com.direpredium.reddittrends.presentation.screens.TopPostsFragment"
+        android:label="Top Posts"
+        tools:layout="@layout/fragment_top_posts" >
+        <action
+            android:id="@+id/action_topPosts_to_postDetails"
+            app:destination="@id/postDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetails"
+        android:name="com.direpredium.reddittrends.presentation.screens.PostDetailsFragment"
+        android:label="Post deteils"
+        tools:layout="@layout/fragment_post_details" />
+
+</navigation>

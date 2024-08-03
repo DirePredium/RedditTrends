@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="toolbar_background">@color/black_gray</color>
+    <color name="screen_background">@color/black</color>
+    <color name="text_post_author">@color/orange</color>
+    <color name="text_post_hours_ago">@color/light_gray</color>
+    <color name="text_post_title">@color/white</color>
+    <color name="text_post_comments">@color/light_gray</color>
+    <color name="post_loading_state_text">@color/white</color>
+    <color name="post_loading_state_progress">@color/white</color>
+</resources>

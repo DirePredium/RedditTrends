@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp">
+
+    <ImageView
+        android:id="@+id/ivThumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginRight="10dp"
+        android:contentDescription="thumbnail"
+        app:layout_constraintBottom_toBottomOf="@+id/tNumComments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tAuthor"
+        app:layout_constraintWidth_max="100dp"
+        app:layout_constraintWidth_min="70dp"
+        tools:src="@drawable/ic_image_placeholder" />
+
+    <TextView
+        android:id="@+id/tAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/text_post_author"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="r/Author" />
+
+    <TextView
+        android:id="@+id/tHoursAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textSize="12sp"
+        android:textColor="@color/text_post_hours_ago"
+        app:layout_constraintStart_toEndOf="@+id/tAuthor"
+        app:layout_constraintTop_toTopOf="@+id/tAuthor"
+        tools:text="0 hr. ago" />
+
+    <TextView
+        android:id="@+id/tTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="Description"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/text_post_title"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/ivThumbnail"
+        app:layout_constraintStart_toStartOf="@+id/tAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/tAuthor" />
+
+    <TextView
+        android:id="@+id/tNumComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textSize="12sp"
+        android:textColor="@color/text_post_comments"
+        app:layout_constraintStart_toStartOf="@+id/tAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/tTitle"
+        tools:text="0 comments" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/post_item_bottom_hr"
+        app:layout_constraintEnd_toEndOf="@+id/ivThumbnail"
+        app:layout_constraintStart_toStartOf="@+id/tAuthor"
+        app:layout_constraintTop_toBottomOf="@id/tNumComments" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
