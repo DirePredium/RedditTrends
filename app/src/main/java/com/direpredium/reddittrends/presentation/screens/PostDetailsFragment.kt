@@ -103,7 +103,7 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
         val context = imageView.context
         if (url.isNullOrBlank()) {
             Glide.with(context)
-                .load(R.drawable.placeholder)
+                .load(R.drawable.ic_image_placeholder)
                 .into(imageView)
         } else {
             Glide.with(context)
@@ -132,8 +132,8 @@ class PostDetailsFragment : Fragment(R.layout.fragment_post_details) {
                         return false
                     }
                 })
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder)
+                .placeholder(R.drawable.ic_image_placeholder)
+                .error(R.drawable.ic_image_error)
                 .into(imageView)
         }
     }

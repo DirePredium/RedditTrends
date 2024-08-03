@@ -9,6 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.direpredium.reddittrends.R
 import com.direpredium.reddittrends.data.util.TimeManager
 import com.direpredium.reddittrends.databinding.ItemPostBinding
@@ -27,7 +28,9 @@ class PostsAdapter(
             tTitle.text = post.title
             tNumComments.text = "${post.numComments} comments"
             when(post.thumbnailUrl) {
-                "default", "image" -> loadPostPhoto(ivThumbnail, post.imageSource)
+                "default", "image", "self" -> {
+                    loadPostPhoto(ivThumbnail, post.imageSource)
+                }
                 else -> {
                     if(post.thumbnailUrl.startsWith("http")) {
                         loadPostPhoto(ivThumbnail, post.thumbnailUrl)
@@ -60,14 +63,12 @@ class PostsAdapter(
 
     private fun loadPostPhoto(imageView: ImageView, url: String?) {
         val context = imageView.context
-        if (url.isNullOrBlank()) {
-            Glide.with(context)
-                .load(R.drawable.placeholder)
-                .into(imageView)
-        } else {
+        if (!url.isNullOrBlank()) {
             Glide.with(context)
                 .load(url)
-                .error(R.drawable.ic_image)
+                .placeholder(R.drawable.ic_image_placeholder)
+                .error(R.drawable.ic_image_error)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView)
         }
     }

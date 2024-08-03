@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="black_gray">#333333</color>
+    <color name="light_gray">#C3C3C3</color>
     <color name="white">#FFFFFFFF</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -9,5 +11,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="hint">#FF626262</color>
     <color name="orange">#FF5722</color>
+
+
+    <color name="toolbar_title">@color/orange</color>
+    <color name="toolbar_background">#EAEAEA</color>
+    <color name="screen_background">@color/white</color>
+    <color name="text_post_author">@color/orange</color>
+    <color name="text_post_hours_ago">@color/black_gray</color>
+    <color name="text_post_title">@color/black</color>
+    <color name="text_post_comments">@color/black_gray</color>
+    <color name="post_loading_state_text">@color/black</color>
+    <color name="post_loading_state_progress">@color/black</color>
 
 </resources>

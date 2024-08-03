@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="@+id/tAuthor"
         app:layout_constraintWidth_max="100dp"
         app:layout_constraintWidth_min="70dp"
-        tools:src="@drawable/ic_image" />
+        tools:src="@drawable/ic_image_placeholder" />
 
     <TextView
         android:id="@+id/tAuthor"
@@ -27,7 +27,7 @@
         android:layout_marginStart="16dp"
         android:ellipsize="end"
         android:lines="1"
-        android:textColor="@color/orange"
+        android:textColor="@color/text_post_author"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +42,7 @@
         android:ellipsize="end"
         android:lines="1"
         android:textSize="12sp"
+        android:textColor="@color/text_post_hours_ago"
         app:layout_constraintStart_toEndOf="@+id/tAuthor"
         app:layout_constraintTop_toTopOf="@+id/tAuthor"
         tools:text="0 hr. ago" />
@@ -54,8 +55,8 @@
         android:lines="2"
         android:text="Description"
         android:layout_marginRight="10dp"
-        android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textColor="@color/text_post_title"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/ivThumbnail"
         app:layout_constraintStart_toStartOf="@+id/tAuthor"
@@ -69,6 +70,7 @@
         android:ellipsize="end"
         android:lines="1"
         android:textSize="12sp"
+        android:textColor="@color/text_post_comments"
         app:layout_constraintStart_toStartOf="@+id/tAuthor"
         app:layout_constraintTop_toBottomOf="@+id/tTitle"
         tools:text="0 comments" />

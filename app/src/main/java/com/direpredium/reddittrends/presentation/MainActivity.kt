@@ -8,11 +8,9 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.direpredium.reddittrends.R
 import com.direpredium.reddittrends.databinding.ActivityMainBinding
-import com.direpredium.reddittrends.domain.models.storage.PostState
 import com.direpredium.reddittrends.presentation.screens.ARG_IMAGE_URL
 import com.direpredium.reddittrends.presentation.screens.ARG_NAME
 import com.direpredium.reddittrends.presentation.viewmodel.MainViewModel
@@ -44,16 +42,21 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        if(!viewModel.isPostStateRestored) {
+            restoreOpenedPostState()
+        }
+    }
+
+    private fun restoreOpenedPostState() {
         lifecycleScope.launch {
             val openedPostStateDeferred = async { viewModel.getOpenedPostStateAsync() }
+            viewModel.isPostStateRestored = true
             val openedPostState = openedPostStateDeferred.await()
-            runOnUiThread {
-                if(openedPostState != null) {
-                    navController.navigate(
-                        R.id.postDetails,
-                        bundleOf(ARG_NAME to openedPostState.name, ARG_IMAGE_URL to openedPostState.url)
-                    )
-                }
+            if(openedPostState != null) {
+                navController.navigate(
+                    R.id.postDetails,
+                    bundleOf(ARG_NAME to openedPostState.name, ARG_IMAGE_URL to openedPostState.url)
+                )
             }
         }
     }
